@@ -1,6 +1,6 @@
 # Django e-commerce
 
-An e-commerce app made using django 3, sqlite and bootstrap 4.
+An e-commerce app made using django 3, sqlite and bootstrap 5
 This app also uses several other packages like -
 
 - django-crispy-forms
