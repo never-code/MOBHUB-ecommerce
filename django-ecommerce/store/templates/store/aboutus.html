@@ -1,0 +1,128 @@
+{% extends 'base.html' %} {% block title %} About Page {% endblock title %}
+{%load static %}
+
+{%block content %}
+
+<!--CSS-->
+<style>
+.social-link {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    border-radius: 50%;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+  }
+  
+  .social-link:hover,
+  .social-link:focus {
+    background: #ddd;
+    text-decoration: none;
+    color: #555;
+  }
+
+</style>
+
+
+<div class="bg-light">
+    <div class="container py-5">
+      <div class="row h-100 align-items-center py-5">
+        <div class="col-lg-6">
+          <h1 style="text-align:center" class="display-4">MOBHUB</h1>
+          <p style="text-align:center" class="lead text-muted mb-0">ONE TOUCH AWAY!!</p>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block"><img src=  "{%static '/main.png'%}"    alt="" class="img-fluid"></div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white py-5">
+    <div class="container py-5">
+      <div class="row align-items-center mb-5">
+        <div class="col-lg-6 order-2 order-lg-1"><i class="fa fa-bar-chart fa-2x mb-3 text-primary"></i>
+          <h2 class="font-weight-light">Vision</h2>
+          <p class="font-italic text-muted mb-4"> Traditional commerce and e-commerce are becoming more and more intertwined. And mobile devices are at the heart of this O2O experience. In the mobile commerce expert group we look at what it is, how to move towards the latest solutions and how to stay aligned with the customer base.
+          </p> 
+        </div>
+        <div class="col-lg-5 px-5 mx-auto order-1 order-lg-2"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834139/img-1_e25nvh.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+      </div>
+      <div class="row align-items-center">
+        <div class="col-lg-5 px-5 mx-auto"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834136/img-2_vdgqgn.jpg" alt="" class="img-fluid mb-4 mb-lg-0"></div>
+        <div class="col-lg-6"><i class="fa fa-leaf fa-2x mb-3 text-primary"></i>
+          <h2 class="font-weight-light">Mission & Strategy</h2>
+          <p class="font-italic text-muted mb-4">
+            The role of mobile commerce is growing steadily. People are connected with their mobile devices like never before, and mobile devices develop more and more options and solutions technically speaking, to provide an ever wider range of possibilities with mobile in terms of camera, internet connection, storage, speed, apps, and so on. Following popular demand, the economy switches from traditional commerce to e-commerce and to the platform economy, from push to pull, and getting aligned with the circular economy because of shortage in resources, and the need to recycle materials. This requires a new view on vision, mission and strategy of a company.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-light py-5">
+    <div class="container py-5">
+      <div class="row mb-4">
+        <div class="col-lg-5">
+          <h2 class="display-4 font-weight-light">Our Team</h2>
+        </div>
+      </div>
+  
+      <div class="row text-center">
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src= "{%static '/raghav.jpg'%}" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Raghav Somani</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <ul class="social mb-0 list-inline mt-3">
+              <li class="list-inline-item"><a href="https://github.com/never-code" class="social-link"><i class="fa fa-github"></i></a></li>
+              <li class="list-inline-item"><a href="https://www.linkedin.com/in/raghav-somani-0350791b4/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834130/avatar-3_hzlize.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Soham Mankar</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <ul class="social mb-0 list-inline mt-3">
+                <li class="list-inline-item"><a href="https://github.com/sohammankar" class="social-link"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/soham-mankar-12675a18b/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-2_f8dowd.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Surojit Ghosh</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <ul class="social mb-0 list-inline mt-3">
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/surojit-ghosh-38bbaab8" class="social-link"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/surojit-ghosh-38bbaab8" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+        <!-- Team item-->
+        <div class="col-xl-3 col-sm-6 mb-5">
+          <div class="bg-white rounded shadow-sm py-5 px-4"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556834133/avatar-1_s02nlg.png" alt="" width="100" class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
+            <h5 class="mb-0">Siddharth Soni</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <ul class="social mb-0 list-inline mt-3">
+                <li class="list-inline-item"><a href="https://github.com/siddharthsoni26" class="social-link"><i class="fa fa-github"></i></a></li>
+                <li class="list-inline-item"><a href="https://www.linkedin.com/in/siddharth-soni-7605021a9/" class="social-link"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <!-- End-->
+  
+      </div>
+    </div>
+  </div>
+  
+
+
+{%endblock content %}

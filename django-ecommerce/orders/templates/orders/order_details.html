@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% load thumbnail %} {% block title %} Order no -
+{{order.id}} {% endblock title %} {% block content %}
+<h2 class="mt-4">Order id - {{order.id}}</h2>
+{% comment %}
+<h4 class="font-weight-light">
+  {{order.user.first_name|default:order.user.username}} {{order.user.last_name}}
+</h4>
+{% endcomment %}
+<h4>
+  {% if order.paid %}
+  <span class="badge badge-success">Paid</span>
+  {% else %}
+  <span class="badge badge-danger">Payment Pending</span>
+  {% endif %}
+</h4>
+<h5 class="font-weight-light">
+  Delivery Address - {{order.address}}, {{order.city}}, {{order.pin_code}}
+</h5>
+<h5 class="font-weight-light">Status - {{order.status}}</h5>
+<h5 class="font-weight-light">Placed on - {{order.created}}</h5>
+<h3 class="font-weight-light mt-4">Items</h3>
+<ul class="list-group shadow-sm">
+  {% for o in order.items.all %}
+  <li
+    class="list-group-item d-flex align-items-center justify-content-between flex-column flex-md-row"
+  >
+    <div class="d-flex align-items-center">
+      <img
+        src="{% thumbnail o.product.image 75x0 %}"
+        alt="{{o.product.name}}"
+        class="img-fluid"
+      />
+      <h5 class="ml-3 mb-0 font-weight-light">
+        <a href="{{o.product.get_absolute_url}}">{{o.product.name}}</a>
+      </h5>
+    </div>
+    <h5 class="font-weight-light mb-0">
+      Rs.{{o.product.price}} * {{o.quantity}} = <b>Rs.{{o.total}}</b>
+    </h5>
+  </li>
+  {% endfor %}
+  <li class="list-group-item bg-primary text-white">
+    <h5 class="mb-0 text-right font-weight-light">
+      Total - <b>Rs.{{order.total_price}}</b>
+    </h5>
+  </li>
+</ul>
+<p class="my-2 text-center">
+  <a href="{{order.get_absolute_url}}" class="btn btn-success">Invoice</a>
+</p>
+{% endblock content %}

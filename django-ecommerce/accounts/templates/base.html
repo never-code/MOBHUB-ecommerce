@@ -1,0 +1,340 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %}</title>
+  
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <div class="container">
+        <a href="{% url 'store:Homepage'%}" class="navbar-brand">MOBHUB</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a href="{% url 'store:product_list' %}" class="nav-link">
+                <i class="fa fa-shopping-bag fa-lg mr-1"></i> Store
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'store:categories_list' %}" class="nav-link">
+                <i class="fa fa-shopping-basket fa-lg mr-1"></i> Categories
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'store:Contact' %}" class="nav-link"> ContactUs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'store:About' %}" class="nav-link"> AboutUs
+              </a>
+            </li>
+          </ul>
+          <form action="" class="inline-form mr-md-2 ml-auto">
+            <div class="input-group">
+              <input
+                required
+                type="text"
+                name="name"
+                placeholder="Search items"
+                class="form-control"
+                action = ''
+              />
+              <div class="input-group-append">
+                <button type="submit" class="btn-success btn btn-sm">
+                  <i class="fa fa-search fa-lg"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <ul class="navbar-nav">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a href="{% url 'orders:my' %}" class="nav-link">
+                <i class="fa fa-truck fa-lg mr-1"></i> My Orders
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'cart:cart_details' %}" class="nav-link">
+                <i class="fa fa-shopping-cart fa-lg"></i>
+                <span class="badge badge-secondary">
+                  {% if cart %} {{cart|length}} {% else %} 0 {% endif%}
+                </span>
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                href="#"
+                class="nav-link dropdown-toggle mb-0"
+                data-toggle="dropdown"
+              >
+                {{request.user}}
+              </a>
+              <div class="dropdown-menu">
+                <a href="{% url 'profile'%}" class="dropdown-item">Profile</a>
+                <a href="{% url 'password_change'%}" class="dropdown-item">
+                  Change Password
+                </a>
+                <a href="{% url 'logout' %}" class="dropdown-item">Logout</a>
+              </div>
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a href="{% url 'login' %}" class="nav-link">
+                <i class="fa fa-sign-in fa-lg"></i> Login
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{% url 'register' %}" class="nav-link">
+                <i class="fa fa-user-plus fa-lg"></i> Register
+              </a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      {% if messages %}
+      <div class="alert alert-success my-2">
+        {% for message in messages %} {{message}} {% endfor %}
+      </div>
+      {% endif %} {% block content %} {% endblock content %}
+    </div>
+<!--FOOTER STARTS HERE-->
+<style>
+  .site-footer
+{
+  background-color:#26272b;
+  padding:45px 0 20px;
+  font-size:15px;
+  line-height:24px;
+  color:#737373;
+}
+.site-footer hr
+{
+  border-top-color:#bbb;
+  opacity:0.5
+}
+.site-footer hr.small
+{
+  margin:20px 0
+}
+.site-footer h6
+{
+  color:#fff;
+  font-size:16px;
+  text-transform:uppercase;
+  margin-top:5px;
+  letter-spacing:2px
+}
+.site-footer a
+{
+  color:#737373;
+}
+.site-footer a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links
+{
+  padding-left:0;
+  list-style:none
+}
+.footer-links li
+{
+  display:block
+}
+.footer-links a
+{
+  color:#737373
+}
+.footer-links a:active,.footer-links a:focus,.footer-links a:hover
+{
+  color:#3366cc;
+  text-decoration:none;
+}
+.footer-links.inline li
+{
+  display:inline-block
+}
+.site-footer .social-icons
+{
+  text-align:right
+}
+.site-footer .social-icons a
+{
+  width:40px;
+  height:40px;
+  line-height:40px;
+  margin-left:6px;
+  margin-right:0;
+  border-radius:100%;
+  background-color:#33353d
+}
+.copyright-text
+{
+  margin:0
+}
+@media (max-width:991px)
+{
+  .site-footer [class^=col-]
+  {
+    margin-bottom:30px
+  }
+}
+@media (max-width:767px)
+{
+  .site-footer
+  {
+    padding-bottom:0
+  }
+  .site-footer .copyright-text,.site-footer .social-icons
+  {
+    text-align:center
+  }
+}
+.social-icons
+{
+  padding-left:0;
+  margin-bottom:0;
+  list-style:none
+}
+.social-icons li
+{
+  display:inline-block;
+  margin-bottom:4px
+}
+.social-icons li.title
+{
+  margin-right:15px;
+  text-transform:uppercase;
+  color:#96a2b2;
+  font-weight:700;
+  font-size:13px
+}
+.social-icons a{
+  background-color:#eceeef;
+  color:#818a91;
+  font-size:16px;
+  display:inline-block;
+  line-height:44px;
+  width:44px;
+  height:44px;
+  text-align:center;
+  margin-right:8px;
+  border-radius:100%;
+  -webkit-transition:all .2s linear;
+  -o-transition:all .2s linear;
+  transition:all .2s linear
+}
+.social-icons a:active,.social-icons a:focus,.social-icons a:hover
+{
+  color:#fff;
+  background-color:#29aafe
+}
+.social-icons.size-sm a
+{
+  line-height:34px;
+  height:34px;
+  width:34px;
+  font-size:14px
+}
+.social-icons a.github:hover
+{
+  background-color: gray
+}
+.social-icons a.linkedin:hover
+{
+  background-color:#007bb6
+}
+
+@media (max-width:767px)
+{
+  .social-icons li.title
+  {
+    display:block;
+    margin-right:0;
+    font-weight:600
+  }
+}
+</style>
+
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">MOBHUB<i>(One Touch Away!!)</i> is an online mobile shoping website where you can find different types of mobile phones varying in range.</p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <li><a href="http://127.0.0.1:8000/?category=7">Apple</a></li>
+            <li><a href="http://127.0.0.1:8000/?category=1">Samsung</a></li>
+            <li><a href="http://127.0.0.1:8000/?category=8">Micromax</a></li>
+            <li><a href="http://127.0.0.1:8000/?category=3">Oneplus</a></li>
+            <li><a href="http://127.0.0.1:8000/?category=4">Oppo</a></li>
+            <li><a href="http://127.0.0.1:8000/?category=5">Vivo</a></li>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="{% url 'store:About' %}">About Us</a></li>
+            <li><a href="{% url 'store:Contact' %}">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by 
+       <a href="#">VPPCOE & VA</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li><a class="github" href="https://github.com/never-code"><i class="fa fa-github"></i></a></li>
+            <li><a class="linkedin" href="https://www.linkedin.com/in/raghav-somani-0350791b4/"><i class="fa fa-linkedin"></i></a></li>   
+          </ul>
+        </div>
+      </div>
+    </div>
+</footer>
+
+
+  </body>
+
+
+</html>

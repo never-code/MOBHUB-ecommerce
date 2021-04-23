@@ -1,0 +1,81 @@
+{% extends 'base.html' %} {% block title %} Cart {% endblock title %}
+{% block content %}
+<h1 class="display-4 mt-4 text-center">Cart</h1>
+<hr />
+{% if total %}
+<div class="row justify-content-center">
+  <div class="col-auto">
+    <table class="table table-borderless table-striped table-responsive">
+      <thead class="thead-dark">
+        <tr>
+          <th>Name</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Remove</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in cart_items %}
+        <tr>
+          <td>
+            <a href="{{i.product.get_absolute_url}}"> {{i.product.name}} </a>
+          </td>
+          <td>Rs.{{i.product.price}}</td>
+          <td>
+            <form
+              action="{% url 'cart:add' %}"
+              class="form-inline"
+              method="POST"
+            >
+              {% csrf_token %}
+              {{i.form.product_id}}
+              <div class="input-group">
+                {{i.form.quantity}}
+                <div class="input-group-append">
+                  <button class="btn btn-primary btn-sm" type="submit">
+                    <i class="fa fa-shopping-cart mr-1"></i> Update
+                  </button>
+                </div>
+              </div>
+            </form>
+          </td>
+          <td>
+            <a
+              href="{% url 'cart:remove' i.product.id %}"
+              class="btn btn-danger btn-sm"
+            >
+              <i class="fa fa-times mr-1"></i> Remove
+            </a>
+          </td>
+          <td>Rs.{{i.total}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot class="table-secondary">
+        <tr>
+          <td colspan="3"></td>
+          <td>Grand Total -</td>
+          <td><b>Rs.{{total}}</b></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+<div class="text-center">
+  <a href="{% url 'cart:clear' %}" class="btn btn-warning">Clear Cart</a>
+  <a href="{% url 'orders:place' %}" class="btn btn-success">Checkout</a>
+</div>
+{% else %}
+<div class="text-center">
+  <h3 class="font-weight-light">Cart is empty</h3>
+  <a href="{% url 'store:product_list' %}" class="btn btn-secondary">
+    Go to Store
+  </a>
+</div>
+{% endif %}
+<script>
+  let inputs = document.querySelectorAll("input.form-control");
+  inputs.forEach((i) => i.classList.add("form-control-sm"));
+</script>
+{% endblock content %}

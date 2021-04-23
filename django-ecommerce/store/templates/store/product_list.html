@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %} {% load thumbnail %}
+{%block title %}Store{% endblock title %}
+{%block content %}
+<div class="row mt-3">
+  <div class="col-lg-3 col-md-6 col-12 mb-3">
+    <div class="card card-body p-3 shadow-sm sticky-top">
+      <h2>Filter</h2>
+      <form class="filter-form">
+        {{filter.form|crispy}}
+        <button class="btn btn-info btn-block btn-sm" type="submit">
+          Filter
+        </button>
+      </form>
+    </div>
+  </div>
+  <div class="col-lg-9 col-md-6 col-12">
+    <h2 class="font-weight-light mb-2">Products</h2>
+    <hr />
+    <div class="row">
+      {% for product in products %}
+      <div class="col-lg-4 col-12 mb-2 px-sm-1">
+        <div class="card shadow-sm h-100">
+          <img
+            src="{% thumbnail product.image 0x150 %}"
+            alt="No Image"
+            class="img-aspect p-2"
+          />
+          <div class="card-body">
+            <h3 class="card-subtitle font-weight-light">
+              <a href="{% url 'store:product_details' product.slug %}"
+                >{{product.name}}</a
+              >
+            </h3>
+            <h4 class="card-text">
+              <span class="badge badge-warning">Rs.{{product.price}}</span>
+            </h4>
+            <p class="card-text">{{product.description|truncatewords:23 }}</p>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-12 text-center">
+        <h3 class="font-weight-light my-4 py-4">No products found.</h3>
+      </div>
+      {% endfor %}
+    </div>
+    {% if products|length != 0 %}
+    <nav>
+      {% with page_obj as page %}
+      <div class="mt-2">
+        <p class="my-2">
+          Page {{ page.number }} of {{ page.paginator.num_pages }}
+        </p>
+        <ul class="pagination">
+          {% if page.has_previous %}
+          <li class="page-item">
+            <a href="?page={{ page.previous_page_number }}" class="page-link">
+              Previous
+            </a>
+          </li>
+          {% endif %}
+          <li class="page-item active">
+            <a class="page-link">{{ page.number }}</a>
+          </li>
+          {% if page.has_next %}
+          <li class="page-item">
+            <a href="?page={{ page.next_page_number }}" class="page-link">
+              Next
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+      {% endwith %}
+    </nav>
+    {% endif %}
+  </div>
+</div>
+<script>
+  document.querySelector("#div_id_price > div").className = "d-flex justify-space-between align-items-center";
+  document.querySelectorAll("#div_id_price input").forEach((i) => {
+    i.classList.add("form-control")
+    i.style.minWidth = '10px'
+  });
+  document.querySelectorAll(".filter-form .form-control").forEach((i) => i.classList.add("form-control-sm"));
+</script>
+{% endblock content %}
