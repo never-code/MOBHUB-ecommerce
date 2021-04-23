@@ -1,5 +1,5 @@
 # MOBHUB-ecommerce
-@ -0,0 +1,42 @@
+
 # Django e-commerce
 
 An e-commerce app made using django 3, sqlite and bootstrap 5.
