@@ -14,9 +14,15 @@ In this app admin can manage products and orders and a customer can simply regis
 To run this app on your local machine you can simply follow the instructions given below.
 
 Firstly create a virtual environment for this project by running this command:
->>pip install virtualenv
->>virtualenv env
->>env\Scripts\activate
+```shell
+pip install virtualenv
+```
+```shell
+virtualenv env
+```
+```shell
+env\Scripts\activate
+```
 
 Now To install dependencies you can run
 
