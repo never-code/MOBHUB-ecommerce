@@ -7,6 +7,7 @@ from store.filters import ProductFilter
 from cart.forms import CartForm
 from django.db.models import Count
 
+
 # Create your views here.
 
 
