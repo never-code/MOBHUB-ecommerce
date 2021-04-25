@@ -6,5 +6,6 @@ urlpatterns = [
     path('place', views.CreateOrder.as_view(), name='place'),
     path('my', views.MyOrders.as_view(), name='my'),
     path('details/<int:pk>/', views.OrderDetails.as_view(), name='details'),
-    path('invoice/<int:pk>/', views.OrderInvoice.as_view(), name='invoice')
+    path('invoice/<int:pk>/', views.OrderInvoice.as_view(), name='invoice'),
+    # path('paytm/payment/<int:id>/',name='paytm_payment')
 ]

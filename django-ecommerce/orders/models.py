@@ -11,6 +11,10 @@ choices = (
     ('Shipped', 'Shipped'),
     ('Delivered', 'Delivered')
 )
+PAYMENT = (
+    ('COD', 'COD'),
+    ('PayTm', 'PayTm'),
+)
 
 
 class Order(models.Model):
@@ -24,6 +28,7 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(
         choices=choices, max_length=10, default='Pending')
+    payment=models.CharField(choices=PAYMENT,max_length=10,default='COD')
     total_price = models.FloatField(null=False, blank=False)
 
     class Meta:

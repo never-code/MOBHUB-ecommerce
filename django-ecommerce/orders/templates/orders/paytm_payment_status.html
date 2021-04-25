@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Payment status</title>
+</head>
+<body>
+	<div class="container">
+		<h4>Payment status and order id {{ response_dict.ORDERID}}</h4>
+
+		{% if response_dict.RESPCODE == '01' %}
+			ORDER Success
+			{% else %}
+			Order failed
+		{% endif %}
+	</div>
+
+</body>
+</html>
