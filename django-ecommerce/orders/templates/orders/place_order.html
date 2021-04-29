@@ -24,6 +24,7 @@ Order {% endblock title %} {% block content %}
   <div class="col-md-6 col-12">
     <div class="card card-body">
       <h3 class="mb-3">Shipping Details</h3>
+      <h5><u><b>Cash On Delivery is only available!!</b></u></h5>
       <form method="POST">
         {% csrf_token %} {{form|crispy}} {% if cart.empty %}
         <div class="alert alert-danger my-2">Your cart is empty.</div>

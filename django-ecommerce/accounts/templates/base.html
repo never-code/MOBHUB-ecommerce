@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock title %}</title>
-  
+    <link rel="shortcut icon" type="image/jpg" href="{%static '/favicon.png'%}"/>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -50,6 +50,10 @@
             </li>
             <li class="nav-item">
               <a href="{% url 'store:About' %}" class="nav-link"> AboutUs
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/blog" class="nav-link"> Blog
               </a>
             </li>
           </ul>
@@ -122,7 +126,9 @@
       <div class="alert alert-success my-2">
         {% for message in messages %} {{message}} {% endfor %}
       </div>
-      {% endif %} {% block content %} {% endblock content %}
+      {% endif %} 
+      {% block content %}
+      {% endblock content %}
     </div>
 <!--FOOTER STARTS HERE-->
 <style>
@@ -290,18 +296,18 @@
       <div class="row">
         <div class="col-sm-12 col-md-6">
           <h6>About</h6>
-          <p class="text-justify">MOBHUB<i>(One Touch Away!!)</i> is an online mobile shoping website where you can find different types of mobile phones varying in range.</p>
+          <p class="text-justify">MOBHUB<i>(One Touch Away!!)</i> is an online mobile shoping website where you can find different types of mobile phones varying in price range.</p>
         </div>
 
         <div class="col-xs-6 col-md-3">
           <h6>Categories</h6>
           <ul class="footer-links">
-            <li><a href="http://127.0.0.1:8000/?category=7">Apple</a></li>
-            <li><a href="http://127.0.0.1:8000/?category=1">Samsung</a></li>
-            <li><a href="http://127.0.0.1:8000/?category=8">Micromax</a></li>
-            <li><a href="http://127.0.0.1:8000/?category=3">Oneplus</a></li>
-            <li><a href="http://127.0.0.1:8000/?category=4">Oppo</a></li>
-            <li><a href="http://127.0.0.1:8000/?category=5">Vivo</a></li>
+            <li><a href="http://127.0.0.1:8000/store/?category=2">Apple</a></li>
+            <li><a href="http://127.0.0.1:8000/store/?category=1">Samsung</a></li>
+            <li><a href="http://127.0.0.1:8000/store/?category=5">Micromax</a></li>
+            <li><a href="http://127.0.0.1:8000/store/?category=6">Oneplus</a></li>
+            <li><a href="http://127.0.0.1:8000/store/?category=4">Oppo</a></li>
+            <li><a href="http://127.0.0.1:8000/store/?category=4">Vivo</a></li>
           </ul>
         </div>
 

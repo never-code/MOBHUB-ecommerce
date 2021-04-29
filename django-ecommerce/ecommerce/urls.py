@@ -18,10 +18,11 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 from .import views
-
+admin.site.site_header = "MOBHUB Adminstration"
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
+    path('blog/', include('blog.urls')),
     path('store/', include('store.urls', namespace='store')),
     path('cart/', include('cart.urls', namespace='cart')),
     path('orders/', include('orders.urls', namespace='orders')),
